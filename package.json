@@ -28,7 +28,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "html-to-image": "^1.11.13",
-    "immer": "^11.1.0",
+    "immer": "^11.1.8",
     "js-yaml": "^4.1.0",
     "lightweight-charts": "^5.0.9",
     "lucide-react": "^0.544.0",
