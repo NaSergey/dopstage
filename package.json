@@ -12,7 +12,7 @@
     "api": "npx openapi-typescript https://api.dop.wtf/openapi.json -o ./src/shared/api/schema/generated.ts"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.2.2",
+    "@hookform/resolvers": "^5.4.0",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-select": "^2.2.6",
