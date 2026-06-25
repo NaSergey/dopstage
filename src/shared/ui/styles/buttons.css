@@ -1,0 +1,112 @@
+/* Common styles for all cut12 buttons */
+.button-primary-cut12,
+.button-outline-cut12,
+.button-grey-cut12,
+.button-secondary-cut12 {
+  position: relative;
+  border: 0 !important;
+  --h-margin: 23px;
+  --c1-x: 9px;
+  --c2-x: -0px;
+  --c1-y: 4px;
+  --c2-y: 14px;
+  --clip-path: polygon(
+    /* Top flat */
+    var(--h-margin) 0,
+    calc(100% - var(--h-margin)) 0,
+    /* Top-right corner */
+    calc(100% - var(--c1-x)) var(--c1-y),
+    calc(100% - var(--c2-x)) var(--c2-y),
+    /* Right flat */
+    calc(100% - var(--c2-x)) calc(100% - var(--c2-y)),
+    /* Bottom-right corner */
+    calc(100% - var(--c1-x)) calc(100% - var(--c1-y)),
+    /* Bottom flat */
+    calc(100% - var(--h-margin)) 100%,
+    var(--h-margin) 100%,
+    /* Bottom-left corner */
+    var(--c1-x) calc(100% - var(--c1-y)),
+    var(--c2-x) calc(100% - var(--c2-y)),
+    /* Left flat */
+    var(--c2-x) var(--c2-y),
+    /* Top-left corner */
+    var(--c1-x) var(--c1-y)
+  );
+  clip-path: var(--clip-path);
+}
+
+/* Primary - blue button */
+.button-primary-cut12 {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.button-primary-cut12:hover {
+  background: var(--primary);
+  filter: brightness(1.1);
+}
+
+/* Outline - blue border with purple glow */
+.button-outline-cut12::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  background: var(--primary);
+  clip-path: var(--clip-path);
+  transition: all 0.2s ease;
+}
+
+.button-outline-cut12:hover::before {
+  background: #52525B;
+  filter: blur(12px);
+  opacity: 0.8;
+  inset: -4px;
+  z-index: -30;
+}
+
+.button-outline-cut12::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  z-index: -10;
+  background: var(--background);
+  clip-path: var(--clip-path);
+}
+
+/* Grey - gray border */
+.button-grey-cut12::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -20;
+  background: #52525B;
+  clip-path: var(--clip-path);
+  transition: background 0.2s ease;
+}
+
+.button-grey-cut12:hover::before {
+  background: var(--primary);
+  /* External glow around polygon */
+  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.65))
+          drop-shadow(0 0 18px rgba(168, 85, 247, 0.35));
+}
+
+.button-grey-cut12::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  z-index: -10;
+  background: var(--background);
+  clip-path: var(--clip-path);
+}
+
+/* Secondary - gray button */
+.button-secondary-cut12 {
+  background: #52525B;
+  color: white;
+}
+
+.button-secondary-cut12:hover {
+  background: #3f3f46;
+}

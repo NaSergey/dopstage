@@ -1,0 +1,34 @@
+# =============================================================================
+# Dopamine-UI Docker Compose
+# =============================================================================
+# INTENT: Local development and staging/production deployment.
+# Uses pre-built image from Vultr Container Registry.
+# =============================================================================
+
+services:
+  dopamine-ui:
+    # For local development, you can use build instead of image
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.dop.wtf}
+    
+    image: sgp.vultrcr.com/dopamineregistry/dopamine-ui:${IMAGE_TAG:-latest}
+    container_name: dopamine-ui
+    restart: unless-stopped
+    
+    # Port 3002 preserved for compatibility with current nginx/reverse proxy
+    ports:
+      - "3002:3000"
+    
+    environment:
+      - NODE_ENV=production
+    
+    # Healthcheck for container health monitoring
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

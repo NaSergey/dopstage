@@ -1,0 +1,4 @@
+export const DEFAULT_REFETCH_INTERVAL = 60000;
+export const LONG_REFETCH_INTERVAL = 300000;
+export const STALE_TIME_BUFFER = 5000;
+

@@ -1,0 +1,45 @@
+# =============================================================================
+# Docker Ignore
+# =============================================================================
+# INTENT: Exclude unnecessary files from Docker context for:
+# 1. Faster builds (fewer files to copy)
+# 2. Smaller image size
+# 3. Security (don't copy .env with secrets)
+# =============================================================================
+
+# Dependencies - will be installed fresh in container
+node_modules
+
+# Build artifacts - will be created in container
+.next
+out
+build
+
+# Version control
+.git
+.gitignore
+
+# IDE/Editor
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+
+# Documentation
+*.md
+!README.md
+
+# Environment files (secrets should not be in image)
+.env*
+!.env.example
+
+# CI/CD
+.github
+
+# Development tools
+.prettierrc
+eslint.config.mjs
+
+# Testing
+coverage

@@ -1,0 +1,5 @@
+/* Import all UI styles */
+@import './buttons.css';
+@import './shapes.css';
+@import './components.css';
+@import './table.css';

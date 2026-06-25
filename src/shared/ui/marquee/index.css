@@ -1,0 +1,47 @@
+.marquee {
+  position: absolute;
+  --gap: 0.5rem;
+  --dur: 20s;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  left: 0;
+  top: 0;
+}
+
+.marquee__content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  animation: marquee var(--dur) linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  flex-shrink: 0;
+}
+
+.marquee:hover .marquee__content {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__content {
+    animation: none;
+  }
+}
